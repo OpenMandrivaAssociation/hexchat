@@ -1,6 +1,6 @@
 Summary:	A popular and easy to use graphical IRC (chat) client
 Name:		hexchat
-Version:	2.12.1
+Version:	2.12.4
 Release:	1
 Group:		Networking/IRC
 License:	GPLv2+
@@ -15,17 +15,31 @@ BuildRequires:	pkgconfig(libpci)
 BuildRequires:	pkgconfig(dbus-glib-1)
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(gtk+-2.0)
+BuildRequires:	pkgconfig(lua)
 BuildRequires:	pkgconfig(libproxy-1.0)
 BuildRequires:	pkgconfig(libsexy)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	openssl-devel
 BuildRequires:	desktop-file-utils
+BuildRequires:	autoconf-archive
+
+# This is a fork of abandoned xchat -- so let's give
+# users what they're looking for.
+%rename xchat
 
 %description
 HexChat is an easy to use graphical IRC chat client for the X Window System.
 It allows you to join multiple IRC channels (chat rooms) at the same time, 
 talk publicly, private one-on-one conversations etc. Even file transfers
 are possible.
+
+%package devel
+Summary:	Development files allowing to build plugins for the HexChat IRC client
+Group:		Development/C
+Requires:	%{name} = %{EVRD}
+
+%description devel
+Development files allowing to build plugins for the HexChat IRC client
 
 %prep
 %setup -q
@@ -39,27 +53,19 @@ find -name configure -exec chmod a+x {} \;
         --enable-spell=libsexy \
         --enable-shm
 
-%make
+%make CC="%{__cc}" LD="%{__cc}" OBJC="%{__cc}" CFLAGS="%{optflags}" LDFLAGS="%{optflags}"
 
 %install
 %makeinstall_std
 
 # Add SVG for hicolor
-install -D -m644 share/icons/hexchat.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/hexchat.svg
-
-# Get rid of libtool archives
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
+install -D -m644 data/icons/hexchat.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/hexchat.svg
 
 # Drop deprecated TCL plugin
 find %{buildroot} -name 'tcl.so' -exec rm -f {} ';'
 
 # Remove unused schema
 rm -f %{buildroot}%{_sysconfdir}/gconf/schemas/apps_hexchat_url_handler.schemas
-
-
-#(tpg) remove these files
-rm -rf %{buildroot}%{_includedir}/hexchat-plugin.h
-rm -rf %{buildroot}%{_libdir}/pkgconfig/hexchat-plugin.pc
 
 # Fix opening irc:// links by adding mimetype and editing exec
 desktop-file-install \
@@ -74,12 +80,11 @@ echo Exec="sh -c \"hexchat --existing --url %U || exec hexchat\"">>%{buildroot}%
 %find_lang %{name}
 
 %files -f %{name}.lang
-%doc share/doc/*
 %dir %{_libdir}/hexchat
 %dir %{_libdir}/hexchat/plugins
 %{_bindir}/hexchat
 %{_libdir}/hexchat/plugins/checksum.so
-%{_libdir}/hexchat/plugins/doat.so
+%{_libdir}/hexchat/plugins/lua.so
 %{_libdir}/hexchat/plugins/fishlim.so
 %{_libdir}/hexchat/plugins/sysinfo.so
 %{_libdir}/hexchat/plugins/perl.so
@@ -89,3 +94,7 @@ echo Exec="sh -c \"hexchat --existing --url %U || exec hexchat\"">>%{buildroot}%
 %{_datadir}/dbus-1/services/org.hexchat.service.service
 %{_datadir}/appdata/hexchat.appdata.xml
 %{_mandir}/man1/%{name}.1.*
+
+%files devel
+%{_includedir}/hexchat-plugin.h
+%{_libdir}/pkgconfig/hexchat-plugin.pc
