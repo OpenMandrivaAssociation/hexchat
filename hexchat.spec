@@ -8,7 +8,7 @@ URL:		https://hexchat.github.io
 Source0:	http://dl.hexchat.net/hexchat/%{name}-%{version}.tar.xz
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
-BuildRequires:	perl
+BuildRequires:	perl-ExtUtils-Embed
 BuildRequires:	perl-devel
 BuildRequires:	python-devel
 BuildRequires:	tcl-devel
