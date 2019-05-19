@@ -19,6 +19,7 @@ BuildRequires:	pkgconfig(lua)
 BuildRequires:	pkgconfig(libproxy-1.0)
 BuildRequires:	pkgconfig(libsexy)
 BuildRequires:	pkgconfig(libnotify)
+BuildRequires:	pkgconfig(perl-ExtUtils)
 BuildRequires:	pkgconfig(python2)
 BuildRequires:	openssl-devel
 BuildRequires:	desktop-file-utils
