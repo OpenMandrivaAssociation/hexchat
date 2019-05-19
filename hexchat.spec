@@ -8,6 +8,7 @@ URL:		https://hexchat.github.io
 Source0:	http://dl.hexchat.net/hexchat/%{name}-%{version}.tar.xz
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
+BuildRequires:	perl
 BuildRequires:	perl-devel
 BuildRequires:	python-devel
 BuildRequires:	tcl-devel
@@ -19,7 +20,6 @@ BuildRequires:	pkgconfig(lua)
 BuildRequires:	pkgconfig(libproxy-1.0)
 BuildRequires:	pkgconfig(libsexy)
 BuildRequires:	pkgconfig(libnotify)
-BuildRequires:	pkgconfig(perl)
 BuildRequires:	pkgconfig(python2)
 BuildRequires:	openssl-devel
 BuildRequires:	desktop-file-utils
