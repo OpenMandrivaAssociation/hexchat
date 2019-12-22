@@ -95,10 +95,10 @@ rm -f %{buildroot}%{_sysconfdir}/gconf/schemas/apps_hexchat_url_handler.schemas
 %{_libdir}/hexchat/plugins/sysinfo.so
 %{_libdir}/hexchat/plugins/perl.so
 %{_libdir}/hexchat/plugins/python.so
-%{_datadir}/applications/hexchat.desktop
+%{_datadir}/applications/*.desktop
 %{_iconsdir}/hicolor/*/apps/*.*g
 %{_datadir}/dbus-1/services/org.hexchat.service.service
-%{_datadir}/appdata/hexchat.appdata.xml
+%{_datadir}/metainfo/*.appdata.xml
 %{_mandir}/man1/%{name}.1.*
 
 %files devel
