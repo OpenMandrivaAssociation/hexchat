@@ -74,14 +74,14 @@ find %{buildroot} -name 'tcl.so' -exec rm -f {} ';'
 rm -f %{buildroot}%{_sysconfdir}/gconf/schemas/apps_hexchat_url_handler.schemas
 
 # Fix opening irc:// links by adding mimetype and editing exec
-desktop-file-install \
-    --add-mime-type='x-scheme-handler/irc;x-scheme-handler/ircs' \
-    --remove-key=Exec \
-    --dir=%{buildroot}%{_datadir}/applications/ \
-    %{buildroot}%{_datadir}/applications/hexchat.desktop
+#desktop-file-install \
+#    --add-mime-type='x-scheme-handler/irc;x-scheme-handler/ircs' \
+#    --remove-key=Exec \
+#    --dir=%{buildroot}%{_datadir}/applications/ \
+#    %{buildroot}%{_datadir}/applications/hexchat.desktop
 
 # Workaround for EL's version of desktop-file-install
-echo Exec="sh -c \"hexchat --existing --url %U || exec hexchat\"">>%{buildroot}%{_datadir}/applications/hexchat.desktop
+#echo Exec="sh -c \"hexchat --existing --url %U || exec hexchat\"">>%{buildroot}%{_datadir}/applications/hexchat.desktop
 
 %find_lang %{name}
 
