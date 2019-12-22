@@ -6,6 +6,7 @@ Group:		Networking/IRC
 License:	GPLv2+
 URL:		https://hexchat.github.io
 Source0:	http://dl.hexchat.net/hexchat/%{name}-%{version}.tar.xz
+BuildRequires:  meson
 BuildRequires:	gettext-devel
 BuildRequires:	intltool
 BuildRequires:	perl-ExtUtils-Embed
@@ -47,18 +48,11 @@ Development files allowing to build plugins for the HexChat IRC client
 %setup -q
 
 %build
-find -type f -exec chmod a-x {} \;
-find -name configure -exec chmod a+x {} \;
-
-%configure \
-	--enable-ipv6 \
-        --enable-spell=libsexy \
-        --enable-shm
-
-%make CC="%{__cc}" LD="%{__cc}" OBJC="%{__cc}" CFLAGS="%{optflags}" LDFLAGS="%{optflags}"
+%meson
+%meson_build
 
 %install
-%makeinstall_std
+%meson_install
 
 # Add SVG for hicolor
 install -D -m644 data/icons/hexchat.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/hexchat.svg
