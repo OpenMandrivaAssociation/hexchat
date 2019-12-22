@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 Summary:	A popular and easy to use graphical IRC (chat) client
 Name:		hexchat
 Version:	2.14.3
