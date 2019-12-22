@@ -49,6 +49,8 @@ Development files allowing to build plugins for the HexChat IRC client
 
 %prep
 %setup -q
+# fix python3.8 linking
+sed -i -e '/with-python/s,python3,python3-embed,g' meson_options.txt
 
 %build
 %meson
