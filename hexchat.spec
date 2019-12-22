@@ -22,6 +22,7 @@ BuildRequires:	pkgconfig(libproxy-1.0)
 BuildRequires:	pkgconfig(libsexy)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(python2)
+BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:	openssl-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	autoconf-archive
