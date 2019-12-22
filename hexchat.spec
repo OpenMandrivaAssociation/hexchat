@@ -53,6 +53,8 @@ Development files allowing to build plugins for the HexChat IRC client
 sed -i -e '/with-python/s,python3,python3-embed,g' meson_options.txt
 
 %build
+export CC=gcc
+export CXX=g++
 %meson
 %meson_build
 
