@@ -29,6 +29,7 @@ BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(luajit)
 BuildRequires:	pkgconfig(openssl)
+BuildRequires:  python3dist(cffi)
 BuildRequires:	desktop-file-utils
 BuildRequires:	autoconf-archive
 
