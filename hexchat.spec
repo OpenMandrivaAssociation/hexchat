@@ -4,7 +4,7 @@
 Summary:	A popular and easy to use graphical IRC (chat) client
 Name:		hexchat
 Version:	2.16.1
-Release:	1
+Release:	2
 Group:		Networking/IRC
 License:	GPLv2+
 URL:		https://hexchat.github.io
