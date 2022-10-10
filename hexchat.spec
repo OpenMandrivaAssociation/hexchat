@@ -55,10 +55,8 @@ are possible.
 %{_libdir}/%{name}/plugins/sysinfo.so
 %{_libdir}/%{name}/plugins/perl.so
 %{_libdir}/%{name}/plugins/python.so
-%{_datadir}/applications/*.desktop
 %{_libdir}/%{name}/python/*.py
 %{_datadir}/dbus-1/services/org.hexchat.service.service
-%{_datadir}/metainfo/*.appdata.xml
 %{_datadir}/applications/*.desktop
 %{_metainfodir}/io.github.Hexchat.appdata.xml
 %{_metainfodir}/io.github.Hexchat.Plugin.*.metainfo.xml
