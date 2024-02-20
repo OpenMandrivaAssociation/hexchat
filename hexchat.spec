@@ -3,12 +3,13 @@
 
 Summary:	A popular and easy to use graphical IRC (chat) client
 Name:		hexchat
-Version:	2.16.1
-Release:	3
+Version:	2.16.2
+Release:	1
 Group:		Networking/IRC
 License:	GPLv2+
 URL:		https://hexchat.github.io
-Source0:	http://dl.hexchat.net/hexchat/%{name}-%{version}.tar.xz
+#Source0:	http://dl.hexchat.net/hexchat/%{name}-%{version}.tar.xz
+Source0:	https://github.com/hexchat/hexchat/releases/download/v%{version}/%{name}-%{version}.tar.xz
 BuildRequires:	appstream-util
 BuildRequires:	bison
 BuildRequires:	gettext-devel
