@@ -81,7 +81,8 @@ Development files allowing to build plugins for the HexChat IRC client
 #-----------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -q
+%setup -q
+%patch -P0 -p1
 
 %build
 %meson \
