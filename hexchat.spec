@@ -4,11 +4,12 @@
 Summary:	A popular and easy to use graphical IRC (chat) client
 Name:		hexchat
 Version:	2.16.2
-Release:	4
+Release:	5
 Group:		Networking/IRC
 License:	GPLv2+
 URL:		https://hexchat.github.io
 Source0:	https://github.com/hexchat/hexchat/releases/download/v%{version}/hexchat-%{version}.tar.xz
+Patch0:	hexchat-openssl3-err-remove-state.patch
 BuildRequires:	appstream-util
 BuildRequires:	bison
 BuildRequires:	gettext-devel
@@ -80,7 +81,7 @@ Development files allowing to build plugins for the HexChat IRC client
 #-----------------------------------------------------------------------
 
 %prep
-%setup -q
+%autosetup -p1 -q
 
 %build
 %meson \
